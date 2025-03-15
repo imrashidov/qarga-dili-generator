@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
+import BugIcon from "@/public/images/bug.svg";
+import Link from "next/link";
 export default function Home() {
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
@@ -70,13 +71,20 @@ export default function Home() {
         <h1 className="text-4xl font-bold text-amber-500 dark:text-amber-400 mb-2 relative">
           Qarğa Dili Generator 🐦‍⬛
         </h1>
+        <span className="dark:text-black text-black text-xs bg-amber-600 dark:bg-amber-400 px-2 py-1 rounded-sm absolute top-2 right-2">
+          BETA
+        </span>
         <p className="text-gray-300 dark:text-gray-400 max-w-md mx-auto">
           Qarğa dili hər saitdən sonra seçilmiş hecaya əlavə edən əyləncəli bir
           dil oyunudur.
         </p>
-        <span className="dark:text-black text-black text-sm bg-amber-600 dark:bg-amber-400 px-2 py-1 rounded-sm fixed top-2 right-2">
-          BETA
-        </span>
+        <Link
+          href="https://github.com/imrashidov/qarga-dili-generator/issues"
+          target="_blank"
+          className="w-10 h-10 fixed bottom-2 left-2 bg-amber-600 dark:bg-amber-400 px-2 py-1 rounded-sm flex items-center justify-center"
+        >
+          <BugIcon className="w-4 h-4" />
+        </Link>
       </header>
 
       <main className="w-full max-w-2xl bg-gray-900 dark:bg-black rounded-lg shadow-xl p-6 md:p-8 border border-gray-700">
@@ -198,7 +206,7 @@ export default function Home() {
       <footer className="mt-8 text-center text-gray-400 dark:text-gray-500 text-sm">
         <p>Qarğa Dili Generator &copy; {new Date().getFullYear()}</p>
         <p>
-          Powered by{" "}
+          Hazırladı:{" "}
           <a
             href="https://github.com/imrashidov"
             target="_blank"
