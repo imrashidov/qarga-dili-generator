@@ -20,6 +20,10 @@ Məsələn:
 - Mobil uyğun dizayn
 - Nəticəni mübadilə buferinə kopyalama
 
+## Ekran görüntüləri
+
+![Home Page](screenshots/screenshot.jpeg)
+
 ## Texnologiyalar
 
 - Next.js 15
@@ -38,7 +42,7 @@ Məsələn:
 
 ```bash
 # Layihəni klonlayın
-git clone https://github.com/yourusername/qarga-dili.git
+git clone https://github.com/imrashidov/qarga-dili-generator.git
 cd qarga-dili
 
 # Asılılıqları yükləyin
