@@ -65,22 +65,22 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-indigo-950 p-6 flex flex-col items-center">
+    <div className="min-h-screen bg-gradient-to-b from-gray-800 to-black dark:from-black dark:to-gray-900 p-6 flex flex-col items-center">
       <header className="my-8 text-center">
-        <h1 className="text-4xl font-bold text-indigo-700 dark:text-indigo-400 mb-2">
+        <h1 className="text-4xl font-bold text-amber-500 dark:text-amber-400 mb-2">
           Qarğa Dili Generator 🐦‍⬛
         </h1>
-        <p className="text-gray-600 dark:text-gray-300 max-w-md mx-auto">
+        <p className="text-gray-300 dark:text-gray-400 max-w-md mx-auto">
           Qarğa dili hər saitdən sonra seçilmiş hecayı əlavə edən əyləncəli bir
           dil oyunudur.
         </p>
       </header>
 
-      <main className="w-full max-w-2xl bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 md:p-8">
+      <main className="w-full max-w-2xl bg-gray-900 dark:bg-black rounded-lg shadow-xl p-6 md:p-8 border border-gray-700">
         <div className="mb-6">
           <label
             htmlFor="suffix"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+            className="block text-sm font-medium text-gray-300 dark:text-gray-400 mb-2"
           >
             Hansı variantı istifadə etmək istərdiniz?
           </label>
@@ -89,8 +89,8 @@ export default function Home() {
               onClick={() => handleVariantSelect("ba")}
               className={`px-4 py-2 rounded-full text-sm ${
                 suffix === "ba" && customInput === ""
-                  ? "bg-indigo-600 text-white"
-                  : "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+                  ? "bg-amber-600 text-white"
+                  : "bg-gray-700 dark:bg-gray-800 text-gray-200 dark:text-gray-300"
               }`}
             >
               &quot;ba/bə&quot; variantı
@@ -99,8 +99,8 @@ export default function Home() {
               onClick={() => handleVariantSelect("ga")}
               className={`px-4 py-2 rounded-full text-sm ${
                 suffix === "ga" && customInput === ""
-                  ? "bg-indigo-600 text-white"
-                  : "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+                  ? "bg-amber-600 text-white"
+                  : "bg-gray-700 dark:bg-gray-800 text-gray-200 dark:text-gray-300"
               }`}
             >
               &quot;ga/gə&quot; variantı
@@ -110,7 +110,7 @@ export default function Home() {
                 <input
                   type="text"
                   placeholder="Öz variantınız..."
-                  className="px-4 py-2 rounded-full text-sm bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="px-4 py-2 rounded-full text-sm bg-gray-800 dark:bg-gray-900 text-gray-200 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500"
                   value={customInput}
                   onChange={(e) => handleSuffixChange(e.target.value)}
                   maxLength={5}
@@ -122,7 +122,7 @@ export default function Home() {
                     setCustomInput("");
                     handleVariantSelect("ba");
                   }}
-                  className="px-2 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                  className="px-2 py-2 rounded-full bg-gray-700 dark:bg-gray-800 text-gray-200 dark:text-gray-300 hover:bg-gray-600 dark:hover:bg-gray-700 transition-colors"
                   title="Öz variantı sil"
                 >
                   <svg
@@ -148,13 +148,13 @@ export default function Home() {
         <div className="mb-6">
           <label
             htmlFor="input-text"
-            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+            className="block text-sm font-medium text-gray-300 dark:text-gray-400 mb-2"
           >
             Normal mətn daxil edin:
           </label>
           <textarea
             id="input-text"
-            className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 min-h-[120px]"
+            className="w-full p-3 border border-gray-600 dark:border-gray-700 rounded-lg bg-gray-800 dark:bg-gray-900 text-gray-200 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500 min-h-[120px]"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             placeholder="Məsələn: Salam, necəsən?"
@@ -162,7 +162,7 @@ export default function Home() {
         </div>
 
         <button
-          className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-4 rounded-lg transition-colors"
+          className="w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-4 rounded-lg transition-colors"
           onClick={convertToQargaDili}
         >
           Çevir
@@ -170,17 +170,17 @@ export default function Home() {
 
         {outputText && (
           <div className="mt-8">
-            <h2 className="text-lg font-medium text-gray-800 dark:text-gray-200 mb-2">
+            <h2 className="text-lg font-medium text-gray-200 dark:text-gray-300 mb-2">
               Qarğa dilində nəticə:
             </h2>
-            <div className="p-4 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg">
-              <p className="text-gray-800 dark:text-gray-100 whitespace-pre-wrap">
+            <div className="p-4 bg-gray-800/50 dark:bg-black/50 rounded-lg border border-gray-700">
+              <p className="text-gray-200 dark:text-gray-300 whitespace-pre-wrap">
                 {outputText}
               </p>
             </div>
             <div className="mt-4 flex justify-end">
               <button
-                className="text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300 text-sm font-medium"
+                className="text-amber-500 hover:text-amber-400 dark:text-amber-400 dark:hover:text-amber-300 text-sm font-medium"
                 onClick={() => {
                   navigator.clipboard.writeText(outputText);
                 }}
@@ -192,7 +192,7 @@ export default function Home() {
         )}
       </main>
 
-      <footer className="mt-8 text-center text-gray-500 dark:text-gray-400 text-sm">
+      <footer className="mt-8 text-center text-gray-400 dark:text-gray-500 text-sm">
         <p>Qarğa Dili Generator &copy; {new Date().getFullYear()}</p>
         <p>
           Powered by{" "}
@@ -200,7 +200,7 @@ export default function Home() {
             href="https://github.com/imrashidov"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300"
+            className="text-amber-500 hover:text-amber-400 dark:text-amber-400 dark:hover:text-amber-300"
           >
             Farid Rashidov
           </a>
