@@ -8,6 +8,7 @@ export default function Home() {
   const [outputText, setOutputText] = useState("");
   const [suffix, setSuffix] = useState("ba");
   const [customInput, setCustomInput] = useState("");
+  const [isCopied, setIsCopied] = useState(false);
 
   const isConsonant = (char: string): boolean => {
     if (!char || char.length !== 1) return false;
@@ -63,6 +64,15 @@ export default function Home() {
   const handleVariantSelect = (variant: string) => {
     setSuffix(variant);
     setCustomInput("");
+  };
+
+  const handleCopyText = () => {
+    navigator.clipboard.writeText(outputText);
+    setIsCopied(true);
+
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 1500);
   };
 
   return (
@@ -192,11 +202,9 @@ export default function Home() {
             <div className="mt-4 flex justify-end">
               <button
                 className="text-amber-500 hover:text-amber-400 dark:text-amber-400 dark:hover:text-amber-300 text-sm font-medium"
-                onClick={() => {
-                  navigator.clipboard.writeText(outputText);
-                }}
+                onClick={handleCopyText}
               >
-                Kopyala
+                {isCopied ? "Kopyalandı" : "Kopyala"}
               </button>
             </div>
           </div>
