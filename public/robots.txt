@@ -1,6 +1,4 @@
-# Allow all crawlers
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://qargadili.vercel.app/sitemap.xml
+Sitemap: https://qargadili.com/sitemap.xml
