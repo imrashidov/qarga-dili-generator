@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Qarğa Dili Generatoru
 
-## Getting Started
+"Qarğa Dili" (Qarğa Dili) generatoru, ənənəvi Azərbaycan dil oyunu olan Qarğa Dilini normal mətndən avtomatik olaraq yaradan veb tətbiqdir.
 
-First, run the development server:
+## Qarğa Dili nədir?
+
+Qarğa Dili, normal danışıq dilində hər sait hərfdən (a, e, i, o, u, ə) sonra "ba" və ya fərqli bölgələrdə "g", "ga" kimi hecalar əlavə olunmaqla yaradılan əyləncəli bir dil oyunudur.
+
+Məsələn:
+
+- "Salam" → "Sabalabam"
+- "Necəsən?" → "Nebəcəbəsəban?"
+- "Mən məktəbə gedirəm." → "Məbən məbəktəbəbə gebedirəbəm."
+
+## Özəlliklər
+
+- Normal mətni Qarğa Dilinə çevirmə
+- Fərqli bölgə variantlarını dəstəkləmə (ba, g, ga və ya xüsusi əlavələr)
+- Qaranlıq/işıqlı mövzu dəstəyi
+- Mobil uyğun dizayn
+- Nəticəni mübadilə buferinə kopyalama
+
+## Texnologiyalar
+
+- Next.js 15
+- React 19
+- Tailwind CSS 4
+- TypeScript
+
+## Necə İstifadə Olunur
+
+1. Bir mətn daxil edin
+2. Bölgə variantını seçin (ba, g, ga və ya xüsusi)
+3. "Çevir" düyməsinə klikləyin
+4. Nəticəni görüntüləyin və istəsəniz kopyalayın
+
+## Quraşdırma və İşə Salma
 
 ```bash
+# Layihəni klonlayın
+git clone https://github.com/yourusername/qarga-dili.git
+cd qarga-dili
+
+# Asılılıqları yükləyin
+npm install
+
+# İnkişaf serverini başladın
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Brauzerinizdə [http://localhost:3000](http://localhost:3000) ünvanını açaraq tətbiqi görüntüləyə bilərsiniz.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Lisenziya
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
