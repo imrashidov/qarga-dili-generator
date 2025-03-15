@@ -57,10 +57,6 @@ export default function RootLayout({
     <html lang="az">
       <head>
         <meta name="apple-mobile-web-app-title" content="Qarğa Dili" />
-        <meta
-          name="google-site-verification"
-          content={process.env.GOOGLE_SITE_VERIFICATION}
-        />
         <link rel="manifest" href="/site.webmanifest" />
         <link
           rel="apple-touch-icon"
