@@ -1,4 +1,4 @@
-# Qarğa Dili Generator
+# Qarğa Dili Generator 🐦‍⬛
 
 "Qarğa Dili" (Qarğa Dili) generator, ənənəvi Azərbaycan dil oyunu olan Qarğa Dilini normal mətndən avtomatik olaraq yaradan veb tətbiqdir.
 
@@ -15,7 +15,7 @@ Məsələn:
 ## Özəlliklər
 
 - Normal mətni Qarğa Dilinə çevirmə
-- Fərqli bölgə variantlarını dəstəkləmə (ba, g, ga və ya xüsusi əlavələr)
+- Fərqli bölgə variantlarını dəstəkləmə (ba, ga və ya xüsusi əlavələr)
 - Qaranlıq/işıqlı mövzu dəstəyi
 - Mobil uyğun dizayn
 - Nəticəni mübadilə buferinə kopyalama
