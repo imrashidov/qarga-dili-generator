@@ -19,6 +19,7 @@ Məsələn:
 - Qaranlıq/işıqlı mövzu dəstəyi
 - Mobil uyğun dizayn
 - Nəticəni mübadilə buferinə kopyalama
+- SEO optimallaşdırması və Sitemap dəstəyi
 
 ## Texnologiyalar
 
@@ -38,7 +39,7 @@ Məsələn:
 
 ```bash
 # Layihəni klonlayın
-git clone https://github.com/yourusername/qarga-dili.git
+git clone https://github.com/imrashidov/qarga-dili.git
 cd qarga-dili
 
 # Asılılıqları yükləyin
@@ -49,6 +50,14 @@ npm run dev
 ```
 
 Brauzerinizdə [http://localhost:3000](http://localhost:3000) ünvanını açaraq tətbiqi görüntüləyə bilərsiniz.
+
+## SEO və Sitemap
+
+Layihə axtarış motorları üçün optimallaşdırılmışdır:
+
+- `/sitemap.xml` - Saytın strukturunu axtarış motorlarına bildirmək üçün
+- `/robots.txt` - Axtarış robotlarını yönləndirmək üçün
+- Təhlükəsizlik başlıqları - Təhlükəsizlik üçün X-Content-Type-Options, X-Frame-Options və s.
 
 ## Lisenziya
 
