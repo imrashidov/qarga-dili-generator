@@ -67,13 +67,16 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-800 to-black dark:from-black dark:to-gray-900 p-6 flex flex-col items-center">
       <header className="my-8 text-center">
-        <h1 className="text-4xl font-bold text-amber-500 dark:text-amber-400 mb-2">
+        <h1 className="text-4xl font-bold text-amber-500 dark:text-amber-400 mb-2 relative">
           Qarğa Dili Generator 🐦‍⬛
         </h1>
         <p className="text-gray-300 dark:text-gray-400 max-w-md mx-auto">
           Qarğa dili hər saitdən sonra seçilmiş hecaya əlavə edən əyləncəli bir
           dil oyunudur.
         </p>
+        <span className="dark:text-black text-black text-sm bg-amber-600 dark:bg-amber-400 px-2 py-1 rounded-sm fixed top-2 right-2">
+          BETA
+        </span>
       </header>
 
       <main className="w-full max-w-2xl bg-gray-900 dark:bg-black rounded-lg shadow-xl p-6 md:p-8 border border-gray-700">
