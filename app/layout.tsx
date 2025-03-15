@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Qarğa Dili Generatoru",
+  title: "Qarğa Dili Generator",
   description:
     "Qarğa dili hər saitdən sonra seçilmiş hecaya əlavə edən əyləncəli bir dil oyunudur.",
   metadataBase: new URL("https://qargadili.vercel.app"),
@@ -14,21 +14,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "az_AZ",
     url: "https://qargadili.vercel.app",
-    title: "Qarğa Dili Generatoru",
+    title: "Qarğa Dili Generator",
     description: "Əyləncəli dil oyunu olan Qarğa Dilini generasiya edin.",
-    siteName: "Qarğa Dili Generatoru",
+    siteName: "Qarğa Dili Generator",
     images: [
       {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Qarğa Dili Generatoru",
+        alt: "Qarğa Dili Generator",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Qarğa Dili Generatoru",
+    title: "Qarğa Dili Generator",
     description: "Əyləncəli dil oyunu olan Qarğa Dilini generasiya edin.",
     images: ["/images/og-image.png"],
     creator: "@imrashidov",

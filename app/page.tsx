@@ -71,7 +71,7 @@ export default function Home() {
           Qarğa Dili Generator 🐦‍⬛
         </h1>
         <p className="text-gray-300 dark:text-gray-400 max-w-md mx-auto">
-          Qarğa dili hər saitdən sonra seçilmiş hecayı əlavə edən əyləncəli bir
+          Qarğa dili hər saitdən sonra seçilmiş hecaya əlavə edən əyləncəli bir
           dil oyunudur.
         </p>
       </header>
