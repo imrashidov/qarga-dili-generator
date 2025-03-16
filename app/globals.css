@@ -24,3 +24,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Prevents iOS zoom on input focus */
+input,
+textarea,
+select {
+  font-size: 16px; /* Minimum font size to prevent zoom on iOS */
+}
