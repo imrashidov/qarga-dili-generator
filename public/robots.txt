@@ -7,4 +7,3 @@ Host: https://qargadili.vercel.app
 
 # Sitemaps
 Sitemap: https://qargadili.vercel.app/sitemap.xml
-Sitemap: https://qargadili.vercel.app/sitemap-0.xml

@@ -1,12 +1,7 @@
 import type { NextConfig } from "next";
 import type { Configuration as WebpackConfig } from "webpack";
+// @ts-expect-error - next-pwa doesn't have types
 import withPWA from "next-pwa";
-
-declare module "next-pwa" {
-  export default function withPWA(
-    config: any
-  ): (nextConfig: NextConfig) => NextConfig;
-}
 
 const config = withPWA({
   dest: "public",
@@ -20,11 +15,15 @@ const config = withPWA({
     domains: ["qargadili.vercel.app"],
   },
   webpack(config: WebpackConfig) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
-
+    if (config.module) {
+      config.module.rules = [
+        ...(config.module.rules || []),
+        {
+          test: /\.svg$/,
+          use: ["@svgr/webpack"],
+        },
+      ];
+    }
     return config;
   },
   async rewrites() {
