@@ -2,14 +2,24 @@
   "name": "Qarğa Dili Generator",
   "short_name": "Qarğa Dili",
   "description": "Qarğa dili kodlaşdırılmış və ya şifrəli danışıq üsuludur. Bu dilin əsas məqsədi sözləri elə dəyişməkdir ki, yalnız onu bilən şəxslər anlaya bilsin.",
-  "start_url": "/",
+  "start_url": "/?source=pwa",
+  "id": "/",
   "display": "standalone",
   "background_color": "#FFFFFF",
-  "theme_color": "#4F46E5",
+  "theme_color": "#000000",
   "orientation": "portrait-primary",
   "scope": "/",
   "prefer_related_applications": false,
   "categories": ["utilities", "education"],
+  "shortcuts": [
+    {
+      "name": "Qarğa Dili Generator",
+      "short_name": "Generator",
+      "description": "Qarğa dilinə çevir",
+      "url": "/?source=shortcut",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ],
   "icons": [
     {
       "src": "/icon-192x192.png",
@@ -20,12 +30,14 @@
     {
       "src": "/icon-384x384.png",
       "sizes": "384x384",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }
