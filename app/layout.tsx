@@ -78,7 +78,7 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#000000" />
         <meta name="apple-mobile-web-app-title" content="Qarğa Dili" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="manifest" href="/manifest.json" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -96,7 +96,7 @@ export default function RootLayout({
           sizes="16x16"
           href="/images/favicon-16x16.png"
         />
-        <meta name="msapplication-TileColor" content="#4F46E5" />
+        <meta name="msapplication-TileColor" content="#000000" />
         {/* Google Analytics */}
         <Script
           strategy="afterInteractive"
