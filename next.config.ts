@@ -16,7 +16,7 @@ const config = withPWA({
   runtimeCaching: [
     {
       urlPattern: /^https?.*/,
-      handler: "StaleWhileRevalidate",
+      handler: "NetworkFirst",
       options: {
         cacheName: "offlineCache",
         expiration: {
@@ -39,7 +39,7 @@ const config = withPWA({
     },
     {
       urlPattern: /\/_next\/image\?url=.+$/i,
-      handler: "StaleWhileRevalidate",
+      handler: "NetworkFirst",
       options: {
         cacheName: "next-image",
         expiration: {
