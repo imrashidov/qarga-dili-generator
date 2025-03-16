@@ -5,5 +5,14 @@ module.exports = {
   generateIndexSitemap: false,
   changefreq: "daily",
   priority: 0.7,
-  exclude: ["/404"],
+  exclude: ["/404", "/500", "/_error"],
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: "*",
+        allow: "/",
+      },
+    ],
+    additionalSitemaps: ["https://qargadili.vercel.app/sitemap.xml"],
+  },
 };
