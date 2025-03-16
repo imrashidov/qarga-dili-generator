@@ -15,6 +15,21 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://qargadili.vercel.app",
   },
+  applicationName: "Qarğa Dili Generator",
+  appleWebApp: {
+    capable: true,
+    title: "Qarğa Dili",
+    statusBarStyle: "black-translucent",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  manifest: "/manifest.json",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+  },
   openGraph: {
     type: "website",
     locale: "az_AZ",
@@ -45,7 +60,6 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: "/images/apple-touch-icon.png",
   },
-  manifest: "/site.webmanifest",
   themeColor: "#4F46E5",
   other: {
     "apple-mobile-web-app-capable": "yes",

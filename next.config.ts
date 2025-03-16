@@ -1,10 +1,25 @@
 import type { NextConfig } from "next";
+import type { Configuration as WebpackConfig } from "webpack";
+import withPWA from "next-pwa";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+declare module "next-pwa" {
+  export default function withPWA(
+    config: any
+  ): (nextConfig: NextConfig) => NextConfig;
+}
+
+const config = withPWA({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === "development",
+})({
   reactStrictMode: true,
   swcMinify: true,
-  webpack(config) {
+  images: {
+    domains: ["qargadili.vercel.app"],
+  },
+  webpack(config: WebpackConfig) {
     config.module.rules.push({
       test: /\.svg$/,
       use: ["@svgr/webpack"],
@@ -20,6 +35,6 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-};
+} satisfies NextConfig);
 
-export default nextConfig;
+export default config;
