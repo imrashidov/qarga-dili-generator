@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Farid Rashidov", url: "https://github.com/imrashidov" }],
   creator: "Farid Rashidov",
   publisher: "Farid Rashidov",
+  alternates: {
+    canonical: "https://qargadili.vercel.app",
+  },
   openGraph: {
     type: "website",
     locale: "az_AZ",
