@@ -17,7 +17,6 @@ Məsələn:
 
 - Normal mətni Qarğa Dilinə çevirmə
 - Fərqli bölgə variantlarını dəstəkləmə (ba, ga və ya xüsusi əlavələr)
-- Qaranlıq/işıqlı mövzu dəstəyi
 - Mobil uyğun dizayn
 - Nəticəni mübadilə buferinə kopyalama
 
