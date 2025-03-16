@@ -76,7 +76,7 @@ export default function RootLayout({
   return (
     <html lang="az" suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#4F46E5" />
+        <meta name="theme-color" content="#000000" />
         <meta name="apple-mobile-web-app-title" content="Qarğa Dili" />
         <link rel="manifest" href="/site.webmanifest" />
         <link
