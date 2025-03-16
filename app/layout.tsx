@@ -20,6 +20,24 @@ export const metadata: Metadata = {
     capable: true,
     title: "Qarğa Dili",
     statusBarStyle: "black-translucent",
+    startupImage: [
+      {
+        url: "/apple-splash-640-1136.png",
+        media: "(device-width: 320px) and (device-height: 568px)",
+      },
+      {
+        url: "/apple-splash-750-1334.png",
+        media: "(device-width: 375px) and (device-height: 667px)",
+      },
+      {
+        url: "/apple-splash-1242-2208.png",
+        media: "(device-width: 414px) and (device-height: 736px)",
+      },
+      {
+        url: "/apple-splash-1125-2436.png",
+        media: "(device-width: 375px) and (device-height: 812px)",
+      },
+    ],
   },
   formatDetection: {
     telephone: false,
@@ -76,8 +94,13 @@ export default function RootLayout({
   return (
     <html lang="az" suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#4F46E5" />
         <meta name="apple-mobile-web-app-title" content="Qarğa Dili" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
         <link rel="manifest" href="/manifest.json" />
         <link
           rel="apple-touch-icon"
@@ -96,7 +119,7 @@ export default function RootLayout({
           sizes="16x16"
           href="/images/favicon-16x16.png"
         />
-        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="msapplication-TileColor" content="#4F46E5" />
         {/* Google Analytics */}
         <Script
           strategy="afterInteractive"

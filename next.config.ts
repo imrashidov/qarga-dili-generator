@@ -12,7 +12,7 @@ const config = withPWA({
     document: "/offline",
   },
   cacheOnFrontEndNav: true,
-  reloadOnOnline: true,
+  reloadOnOnline: false,
   runtimeCaching: [
     {
       urlPattern: /^https?.*/,
@@ -24,6 +24,9 @@ const config = withPWA({
           maxAgeSeconds: 24 * 60 * 60, // 24 hours
         },
         networkTimeoutSeconds: 10,
+        matchOptions: {
+          ignoreSearch: true,
+        },
       },
     },
     {
@@ -35,16 +38,22 @@ const config = withPWA({
           maxEntries: 50,
           maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
         },
+        matchOptions: {
+          ignoreSearch: true,
+        },
       },
     },
     {
       urlPattern: /\/_next\/image\?url=.+$/i,
-      handler: "NetworkFirst",
+      handler: "CacheFirst",
       options: {
         cacheName: "next-image",
         expiration: {
           maxEntries: 64,
           maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        },
+        matchOptions: {
+          ignoreSearch: true,
         },
       },
     },
@@ -56,6 +65,9 @@ const config = withPWA({
         expiration: {
           maxEntries: 64,
           maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        },
+        matchOptions: {
+          ignoreSearch: true,
         },
       },
     },
