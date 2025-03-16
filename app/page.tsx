@@ -85,8 +85,9 @@ export default function Home() {
           BETA
         </span>
         <p className="text-gray-300 dark:text-gray-400 max-w-md mx-auto">
-          Qarğa dili hər saitdən sonra seçilmiş hecaya əlavə edən əyləncəli bir
-          dil oyunudur.
+          Qarğa dili kodlaşdırılmış və ya şifrəli danışıq üsuludur. Bu dilin
+          əsas məqsədi sözləri elə dəyişməkdir ki, yalnız onu bilən şəxslər
+          anlaya bilsin.
         </p>
         <Link
           href="https://github.com/imrashidov/qarga-dili-generator/issues"

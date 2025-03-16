@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Qarğa Dili Generator",
   description:
-    "Qarğa dili hər saitdən sonra seçilmiş hecaya əlavə edən əyləncəli bir dil oyunudur.",
+    "Qarğa dili kodlaşdırılmış və ya şifrəli danışıq üsuludur. Bu dilin əsas məqsədi sözləri elə dəyişməkdir ki, yalnız onu bilən şəxslər anlaya bilsin.",
   metadataBase: new URL("https://qargadili.vercel.app"),
   keywords: ["Qarğa dili", "Azərbaycan", "dil oyunu", "generator", "əyləncə"],
   authors: [{ name: "Farid Rashidov", url: "https://github.com/imrashidov" }],
@@ -15,7 +15,8 @@ export const metadata: Metadata = {
     locale: "az_AZ",
     url: "https://qargadili.vercel.app",
     title: "Qarğa Dili Generator",
-    description: "Əyləncəli dil oyunu olan Qarğa Dilini generasiya edin.",
+    description:
+      "Qarğa dili kodlaşdırılmış və ya şifrəli danışıq üsuludur. Bu dilin əsas məqsədi sözləri elə dəyişməkdir ki, yalnız onu bilən şəxslər anlaya bilsin.",
     siteName: "Qarğa Dili Generator",
     images: [
       {
@@ -29,7 +30,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Qarğa Dili Generator",
-    description: "Əyləncəli dil oyunu olan Qarğa Dilini generasiya edin.",
+    description:
+      "Qarğa dili kodlaşdırılmış və ya şifrəli danışıq üsuludur. Bu dilin əsas məqsədi sözləri elə dəyişməkdir ki, yalnız onu bilən şəxslər anlaya bilsin.",
     images: ["/images/og-image.png"],
     creator: "@imrashidov",
   },

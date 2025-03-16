@@ -5,6 +5,7 @@
 ## Qarğa Dili nədir?
 
 Qarğa Dili, normal danışıq dilində hər sait hərfdən (a, e, i, o, u, ə) sonra "ba" və ya fərqli bölgələrdə "g", "ga" kimi hecalar əlavə olunmaqla yaradılan əyləncəli bir dil oyunudur.
+Qarğa dili kodlaşdırılmış və ya şifrəli danışıq üsuludur. Bu dilin əsas məqsədi sözləri elə dəyişməkdir ki, yalnız onu bilən şəxslər anlaya bilsin.
 
 Məsələn:
 
