@@ -64,24 +64,21 @@ export default function RootLayout({
     <html lang="az">
       <head>
         <meta name="apple-mobile-web-app-title" content="Qarğa Dili" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link
+          rel="icon"
+          type="image/png"
+          href="/favicon-96x96.png"
+          sizes="96x96"
+        />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/images/apple-touch-icon.png"
+          href="/apple-touch-icon.png"
         />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/images/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/images/favicon-16x16.png"
-        />
+        <meta name="apple-mobile-web-app-title" content="Qarğa Dili" />
+        <link rel="manifest" href="/site.webmanifest" />
         <meta name="msapplication-TileColor" content="#4F46E5" />
         {/* Google Analytics */}
         <Script
