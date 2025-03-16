@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import BugIcon from "@/public/images/bug.svg";
 import Link from "next/link";
+import BuyMeACoffee from "./components/BuyMeACoffee";
+import BugIcon from "@/public/images/bug.svg";
 export default function Home() {
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
@@ -92,10 +93,11 @@ export default function Home() {
         <Link
           href="https://github.com/imrashidov/qarga-dili-generator/issues"
           target="_blank"
-          className="w-10 h-10 fixed bottom-2 left-2 bg-amber-600 dark:bg-amber-400 px-2 py-1 rounded-sm flex items-center justify-center"
+          className="w-10 h-10 fixed top-2 left-2 bg-amber-600 dark:bg-amber-400 px-2 py-1 rounded-sm flex items-center justify-center"
         >
           <BugIcon className="w-4 h-4" />
         </Link>
+        <BuyMeACoffee />
       </header>
 
       <main className="w-full max-w-2xl bg-gray-900 dark:bg-black rounded-lg shadow-xl p-6 md:p-8 border border-gray-700">
