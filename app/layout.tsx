@@ -60,7 +60,6 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: "/images/apple-touch-icon.png",
   },
-  themeColor: "#4F46E5",
   other: {
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "black-translucent",
@@ -77,6 +76,7 @@ export default function RootLayout({
   return (
     <html lang="az">
       <head>
+        <meta name="theme-color" content="#4F46E5" />
         <meta name="apple-mobile-web-app-title" content="Qarğa Dili" />
         <link
           rel="icon"
