@@ -35,7 +35,7 @@ Məsələn:
 ## Necə İstifadə Olunur
 
 1. Bir mətn daxil edin
-2. Bölgə variantını seçin (ba, g, ga və ya xüsusi)
+2. Variantınızı seçin (ba, ga və ya xüsusi)
 3. "Çevir" düyməsinə klikləyin
 4. Nəticəni görüntüləyin və istəsəniz kopyalayın
 
