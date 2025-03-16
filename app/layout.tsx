@@ -94,7 +94,7 @@ export default function RootLayout({
   return (
     <html lang="az" suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#4F46E5" />
+        <meta name="theme-color" content="#000000" />
         <meta name="apple-mobile-web-app-title" content="Qarğa Dili" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta
@@ -119,7 +119,7 @@ export default function RootLayout({
           sizes="16x16"
           href="/images/favicon-16x16.png"
         />
-        <meta name="msapplication-TileColor" content="#4F46E5" />
+        <meta name="msapplication-TileColor" content="#000000" />
         {/* Google Analytics */}
         <Script
           strategy="afterInteractive"

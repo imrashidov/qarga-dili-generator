@@ -7,7 +7,7 @@
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui", "browser"],
   "background_color": "#FFFFFF",
-  "theme_color": "#4F46E5",
+  "theme_color": "#000000",
   "orientation": "portrait-primary",
   "scope": "/",
   "prefer_related_applications": false,
