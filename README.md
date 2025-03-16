@@ -43,7 +43,7 @@ Məsələn:
 ```bash
 # Layihəni klonlayın
 git clone https://github.com/imrashidov/qarga-dili-generator.git
-cd qarga-dili
+cd qarga-dili-generator
 
 # Asılılıqları yükləyin
 npm install
