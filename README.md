@@ -54,6 +54,48 @@ npm run dev
 
 Brauzerinizdə [http://localhost:3000](http://localhost:3000) ünvanını açaraq tətbiqi görüntüləyə bilərsiniz.
 
+## Struktur
+```bash
+├── .gitignore
+├── README.md
+├── app
+    ├── components
+    │   └── BuyMeACoffee.tsx
+    ├── globals.css
+    ├── layout.tsx
+    ├── manifest.json
+    ├── offline.tsx
+    └── page.tsx
+├── eslint.config.mjs
+├── next-sitemap.config.js
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── public
+    ├── apple-touch-icon.png
+    ├── fallback-70E608-7jGm1o7CiHtX2H.js
+    ├── favicon-96x96.png
+    ├── favicon.ico
+    ├── favicon.svg
+    ├── images
+    │   ├── bug.svg
+    │   └── og-image.png
+    ├── manifest.json
+    ├── robots.txt
+    ├── site.webmanifest
+    ├── sitemap-0.xml
+    ├── sitemap.xml
+    ├── sw.js
+    ├── web-app-manifest-192x192.png
+    ├── web-app-manifest-512x512.png
+    └── workbox-f52fd911.js
+├── screenshots
+    └── screenshot.jpeg
+├── tailwind.config.ts
+└── tsconfig.json
+```
+
 ## Lisenziya
 
 MIT
