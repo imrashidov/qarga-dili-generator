@@ -74,7 +74,6 @@ const config = withPWA({
   ],
 })({
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     domains: ["qargadili.vercel.app"],
   },
