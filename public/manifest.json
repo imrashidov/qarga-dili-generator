@@ -14,8 +14,8 @@
   "categories": ["utilities", "education"],
   "screenshots": [
     {
-      "src": "/screenshot1.png",
-      "sizes": "750x1334",
+      "src": "/images/og-image.png",
+      "sizes": "1200x630",
       "type": "image/png",
       "platform": "narrow"
     }
@@ -26,24 +26,18 @@
       "short_name": "Generator",
       "description": "Qarğa dilinə çevir",
       "url": "/?source=shortcut",
-      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/web-app-manifest-192x192.png", "sizes": "192x192" }]
     }
   ],
   "icons": [
     {
-      "src": "/icon-192x192.png",
+      "src": "/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-384x384.png",
-      "sizes": "384x384",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icon-512x512.png",
+      "src": "/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
