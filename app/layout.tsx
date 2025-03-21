@@ -150,7 +150,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning>
         {children}
-        <Analytics />
+        <Analytics mode="auto" debug={false} />
       </body>
     </html>
   );
