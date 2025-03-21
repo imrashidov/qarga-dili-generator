@@ -150,7 +150,13 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning>
         {children}
-        <Analytics mode="auto" debug={false} />
+        <Analytics
+          debug={false}
+          beforeSend={(event) => {
+            // Don't send analytics events
+            return event.url.includes("/ignore-analytics") ? null : event;
+          }}
+        />
       </body>
     </html>
   );

@@ -37,6 +37,5 @@
       "source": "/sitemap.xml",
       "destination": "/api/sitemap"
     }
-  ],
-  "removeVercelLogo": true
+  ]
 }
