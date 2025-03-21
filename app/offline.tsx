@@ -6,10 +6,8 @@ export default function Offline() {
   const [isOnline, setIsOnline] = useState(true);
 
   useEffect(() => {
-    // Check online status initially
     setIsOnline(navigator.onLine);
 
-    // Add event listeners for online/offline status changes
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
 
