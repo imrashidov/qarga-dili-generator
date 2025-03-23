@@ -148,6 +148,48 @@ export default function RootLayout({
             gtag('config', 'G-15H6VFSV48');
           `}
         </Script>
+
+        {/* Structured Data for better Google indexing */}
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "@id": "https://qargadili.vercel.app/#website",
+                  url: "https://qargadili.vercel.app/",
+                  name: "Qarğa Dili Generator",
+                  description:
+                    "Qarğa dili kodlaşdırılmış və ya şifrəli danışıq üsuludur. Bu dilin əsas məqsədi sözləri elə dəyişməkdir ki, yalnız onu bilən şəxslər anlaya bilsin.",
+                  potentialAction: {
+                    "@type": "SearchAction",
+                    target:
+                      "https://qargadili.vercel.app/?s={search_term_string}",
+                    "query-input": "required name=search_term_string",
+                  },
+                  inLanguage: "az-AZ",
+                },
+                {
+                  "@type": "Organization",
+                  "@id": "https://qargadili.vercel.app/#organization",
+                  name: "Qarğa Dili Generator",
+                  url: "https://qargadili.vercel.app/",
+                  logo: {
+                    "@type": "ImageObject",
+                    "@id": "https://qargadili.vercel.app/#logo",
+                    url: "https://qargadili.vercel.app/images/og-image.png",
+                    width: 1200,
+                    height: 630,
+                    caption: "Qarğa Dili Generator",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
       </head>
       <body suppressHydrationWarning>
         {children}
