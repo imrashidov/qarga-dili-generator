@@ -4,7 +4,7 @@ module.exports = {
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   changefreq: "daily",
-  priority: 0.7,
+  priority: 1,
   exclude: ["/404", "/500", "/_error"],
   robotsTxtOptions: {
     policies: [
