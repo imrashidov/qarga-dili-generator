@@ -11,7 +11,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Qarğa Dili Generator",
+  title: {
+    default: "Qarğa Dili Generator",
+    template: "%s | Qarğa Dili Generator",
+  },
   description:
     "Qarğa dili kodlaşdırılmış və ya şifrəli danışıq üsuludur. Bu dilin əsas məqsədi sözləri elə dəyişməkdir ki, yalnız onu bilən şəxslər anlaya bilsin.",
   metadataBase: new URL("https://qargadili.vercel.app"),
@@ -149,7 +152,6 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Structured Data for better Google indexing */}
         <Script
           id="structured-data"
           type="application/ld+json"
