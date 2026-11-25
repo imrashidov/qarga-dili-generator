@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   category: "education",
   alternates: {
-    canonical: "https://qargadili.vercel.app",
+    canonical: "/",
   },
   applicationName: "Qarğa Dili Generator",
   appleWebApp: {
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "az_AZ",
-    url: "https://qargadili.vercel.app",
+    url: "https://qargadili.vercel.app/",
     title: "Qarğa Dili Generator",
     description:
       "Qarğa dili kodlaşdırılmış danışıq üsuludur: hər saitdən sonra bir hece əlavə olunur ki, yalnız bu oyunu bilənlər sözü anlasın. Mətni onlayn Qarğa dilinə çevirin.",
@@ -135,8 +135,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        <Script
-          id="structured-data"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -147,6 +146,7 @@ export default function RootLayout({
                   "@id": "https://qargadili.vercel.app/#website",
                   url: "https://qargadili.vercel.app/",
                   name: "Qarğa Dili Generator",
+                  alternateName: ["Qarğa Dili", "Qarğa dili generator"],
                   description:
                     "Qarğa dili kodlaşdırılmış danışıq üsuludur: hər saitdən sonra bir hece əlavə olunur ki, yalnız bu oyunu bilənlər sözü anlasın. Mətni onlayn Qarğa dilinə çevirin.",
                   inLanguage: "az-AZ",
