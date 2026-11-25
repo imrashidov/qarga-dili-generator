@@ -1,233 +1,280 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import BuyMeACoffee from "./components/BuyMeACoffee";
-import BugIcon from "@/public/images/bug.svg";
+import Image from "next/image";
+import { useEffect, useMemo, useState } from "react";
+import { convertFromQarga, convertToQarga, DEFAULT_SUFFIX } from "./lib/qarga";
+
+type Variant = "ba" | "ga" | "custom";
+type Mode = "encode" | "decode";
+
+const VARIANTS: { id: Variant; label: string }[] = [
+  { id: "ba", label: "ba / bə" },
+  { id: "ga", label: "ga / gə" },
+  { id: "custom", label: "Özün seç" },
+];
+
 export default function Home() {
+  const [mode, setMode] = useState<Mode>("encode");
   const [inputText, setInputText] = useState("");
-  const [outputText, setOutputText] = useState("");
-  const [suffix, setSuffix] = useState("ba");
-  const [customInput, setCustomInput] = useState("");
-  const [isCopied, setIsCopied] = useState(false);
+  const [variant, setVariant] = useState<Variant>("ba");
+  const [customSuffix, setCustomSuffix] = useState("");
+  const [supporters, setSupporters] = useState<string[]>([]);
+  const [copyState, setCopyState] = useState<"idle" | "done" | "error">("idle");
 
-  const isConsonant = (char: string): boolean => {
-    if (!char || char.length !== 1) return false;
-    const consonants = "bcçdfgğhjklmnpqrsştvxyzBCÇDFGĞHJKLMNPQRSŞTVXYZ";
-    return consonants.includes(char);
+  useEffect(() => {
+    fetch("/api/supporters")
+      .then((r) => r.json())
+      .then((d) => setSupporters(d.supporters ?? []))
+      .catch(() => {});
+  }, []);
+
+  const suffix =
+    variant === "custom" ? customSuffix.trim() || DEFAULT_SUFFIX : variant;
+
+  const outputText = useMemo(
+    () =>
+      mode === "encode"
+        ? convertToQarga(inputText, suffix)
+        : convertFromQarga(inputText, suffix),
+    [inputText, suffix, mode],
+  );
+
+  const encode = mode === "encode";
+
+  const handleSwap = () => {
+    setInputText(outputText);
+    setMode(encode ? "decode" : "encode");
   };
 
-  const completeConsonant = (
-    consonant: string,
-    isHardVowel: boolean = true
-  ): string => {
-    return isHardVowel ? consonant + "a" : consonant + "ə";
-  };
-
-  const handleSuffixChange = (value: string) => {
-    setCustomInput(value);
-    setSuffix(value);
-  };
-
-  const convertToQargaDili = () => {
-    if (!inputText) return;
-
-    const hardVowels = ["a", "o", "u", "A", "O", "U"];
-    const softVowels = ["e", "ə", "i", "ö", "ü", "E", "Ə", "İ", "Ö", "Ü"];
-    const allVowels = [...hardVowels, ...softVowels];
-
-    const getSoftSuffix = (sfx: string): string => {
-      return sfx.replace(/a/g, "ə");
-    };
-
-    let result = "";
-    for (let i = 0; i < inputText.length; i++) {
-      result += inputText[i];
-
-      if (allVowels.includes(inputText[i])) {
-        let currentSuffix = suffix;
-
-        if (currentSuffix.length === 1 && isConsonant(currentSuffix)) {
-          currentSuffix = softVowels.includes(inputText[i])
-            ? completeConsonant(currentSuffix, false)
-            : completeConsonant(currentSuffix, true);
-        } else if (softVowels.includes(inputText[i])) {
-          currentSuffix = getSoftSuffix(currentSuffix);
-        }
-
-        result += currentSuffix;
-      }
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(outputText);
+      setCopyState("done");
+    } catch {
+      setCopyState("error");
     }
-
-    setOutputText(result);
-  };
-
-  const handleVariantSelect = (variant: string) => {
-    setSuffix(variant);
-    setCustomInput("");
-  };
-
-  const handleCopyText = () => {
-    navigator.clipboard.writeText(outputText);
-    setIsCopied(true);
-
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 1500);
+    setTimeout(() => setCopyState("idle"), 1500);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-800 to-black dark:from-black dark:to-gray-900 p-6 flex flex-col items-center">
-      <header className="my-8 text-center">
-        <h1 className="text-4xl font-bold text-amber-500 dark:text-amber-400 mb-2 relative">
-          Qarğa Dili Generator 🐦‍⬛
-        </h1>
-        <span className="dark:text-black text-black text-xs bg-amber-600 dark:bg-amber-400 px-2 py-1 rounded-sm absolute top-2 right-2">
-          BETA
-        </span>
-        <p className="text-gray-300 dark:text-gray-400 max-w-md mx-auto">
-          Qarğa dili kodlaşdırılmış və ya şifrəli danışıq üsuludur. Bu dilin
-          əsas məqsədi sözləri elə dəyişməkdir ki, yalnız onu bilən şəxslər
-          anlaya bilsin.
-        </p>
-        <Link
-          href="https://github.com/imrashidov/qarga-dili-generator/issues"
-          target="_blank"
-          className="w-10 h-10 fixed top-2 left-2 bg-amber-600 dark:bg-amber-400 px-2 py-1 rounded-sm flex items-center justify-center"
-        >
-          <BugIcon className="w-4 h-4" />
-        </Link>
-        <BuyMeACoffee />
-      </header>
+    <div className="min-h-screen px-5 pt-10 pb-24 sm:pt-16">
+      <div className="mx-auto w-full max-w-3xl">
+        <header className="mb-10 max-w-xl">
+          <h1 className="font-serif text-4xl sm:text-5xl font-semibold tracking-tight">
+            Qarğa dili generator
+          </h1>
+          <p className="mt-4 text-muted leading-relaxed">
+            Qarğa dili kodlaşdırılmış danışıq üsuludur: hər saitdən sonra bir
+            hece əlavə olunur ki, yalnız bu oyunu bilənlər sözü anlasın.{" "}
+            <span className="text-ink">Salam</span> sözü{" "}
+            <span className="text-ink">Sabalabam</span> olur.
+          </p>
+        </header>
 
-      <main className="w-full max-w-2xl bg-gray-900 dark:bg-black rounded-lg shadow-xl p-6 md:p-8 border border-gray-700">
-        <div className="mb-6">
-          <label
-            htmlFor="suffix"
-            className="block text-sm font-medium text-gray-300 dark:text-gray-400 mb-2"
-          >
-            Hansı variantı istifadə etmək istərdiniz?
-          </label>
-          <div className="flex gap-4 flex-wrap">
-            <button
-              onClick={() => handleVariantSelect("ba")}
-              className={`px-4 py-2 rounded-full text-sm ${
-                suffix === "ba" && customInput === ""
-                  ? "bg-amber-600 text-white"
-                  : "bg-gray-700 dark:bg-gray-800 text-gray-200 dark:text-gray-300"
-              }`}
-            >
-              &quot;ba/bə&quot; variantı
-            </button>
-            <button
-              onClick={() => handleVariantSelect("ga")}
-              className={`px-4 py-2 rounded-full text-sm ${
-                suffix === "ga" && customInput === ""
-                  ? "bg-amber-600 text-white"
-                  : "bg-gray-700 dark:bg-gray-800 text-gray-200 dark:text-gray-300"
-              }`}
-            >
-              &quot;ga/gə&quot; variantı
-            </button>
-            <div className="flex items-center gap-2">
-              <div className="relative">
+        <main>
+          <fieldset className="mb-8">
+            <legend className="mb-3 text-sm font-medium">
+              Əlavə olunan hece
+            </legend>
+            <div className="flex flex-wrap items-center gap-2">
+              {VARIANTS.map(({ id, label }) => (
+                <label
+                  key={id}
+                  className={`cursor-pointer rounded-md border px-3.5 py-2 text-sm has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent ${
+                    variant === id
+                      ? "border-accent bg-accent text-accent-ink"
+                      : "border-line hover:border-muted"
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="variant"
+                    value={id}
+                    checked={variant === id}
+                    onChange={() => setVariant(id)}
+                    className="sr-only"
+                  />
+                  {label}
+                </label>
+              ))}
+              {variant === "custom" && (
                 <input
                   type="text"
-                  placeholder="Öz variantınız..."
-                  className="px-4 py-2 rounded-full text-sm bg-gray-800 dark:bg-gray-900 text-gray-200 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                  value={customInput}
-                  onChange={(e) => handleSuffixChange(e.target.value)}
+                  aria-label="Öz hecanız"
+                  placeholder="məs. ta"
+                  value={customSuffix}
+                  onChange={(e) => setCustomSuffix(e.target.value)}
                   maxLength={5}
+                  autoFocus
+                  className="w-28 rounded-md border border-line bg-surface px-3 py-2 text-sm"
                 />
-              </div>
-              {customInput && (
-                <button
-                  onClick={() => {
-                    setCustomInput("");
-                    handleVariantSelect("ba");
-                  }}
-                  className="px-2 py-2 rounded-full bg-gray-700 dark:bg-gray-800 text-gray-200 dark:text-gray-300 hover:bg-gray-600 dark:hover:bg-gray-700 transition-colors"
-                  title="Öz variantı sil"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
               )}
             </div>
-          </div>
-        </div>
+          </fieldset>
 
-        <div className="mb-6">
-          <label
-            htmlFor="input-text"
-            className="block text-sm font-medium text-gray-300 dark:text-gray-400 mb-2"
-          >
-            Normal mətn daxil edin:
-          </label>
-          <textarea
-            id="input-text"
-            className="w-full p-3 border border-gray-600 dark:border-gray-700 rounded-lg bg-gray-800 dark:bg-gray-900 text-gray-200 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500 min-h-[120px]"
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            placeholder="Məsələn: Salam, necəsən?"
-          />
-        </div>
-
-        <button
-          className="w-full bg-amber-600 hover:bg-amber-700 text-white font-medium py-3 px-4 rounded-lg transition-colors"
-          onClick={convertToQargaDili}
-        >
-          Çevir
-        </button>
-
-        {outputText && (
-          <div className="mt-8">
-            <h2 className="text-lg font-medium text-gray-200 dark:text-gray-300 mb-2">
-              Qarğa dilində nəticə:
-            </h2>
-            <div className="p-4 bg-gray-800/50 dark:bg-black/50 rounded-lg border border-gray-700">
-              <p className="text-gray-200 dark:text-gray-300 whitespace-pre-wrap">
-                {outputText}
-              </p>
+          <div className="grid items-center gap-3 md:grid-cols-[1fr_auto_1fr] md:gap-4">
+            <div className="flex flex-col">
+              <label htmlFor="input-text" className="mb-2 text-sm font-medium">
+                {encode ? "Normal mətn" : "Qarğa dilində mətn"}
+              </label>
+              <textarea
+                id="input-text"
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                placeholder={
+                  encode ? "Məsələn: Salam, necəsən?" : "Məsələn: Sabalabam"
+                }
+                className="min-h-[180px] flex-1 resize-y rounded-md border border-line bg-surface p-3 leading-relaxed"
+              />
             </div>
-            <div className="mt-4 flex justify-end">
-              <button
-                className="text-amber-500 hover:text-amber-400 dark:text-amber-400 dark:hover:text-amber-300 text-sm font-medium"
-                onClick={handleCopyText}
+
+            <button
+              type="button"
+              onClick={handleSwap}
+              aria-label="İstiqaməti dəyiş"
+              title="İstiqaməti dəyiş"
+              className="mx-auto flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface text-accent hover:border-muted md:mt-7"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-5 w-5 rotate-90 md:rotate-0"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
               >
-                {isCopied ? "Kopyalandı" : "Kopyala"}
-              </button>
+                <path d="M4 8h15m0 0l-4-4m4 4l-4 4M20 16H5m0 0l4-4m-4 4l4 4" />
+              </svg>
+            </button>
+
+            <div className="flex flex-col">
+              <div className="mb-2 flex items-center justify-between">
+                <label htmlFor="output-text" className="text-sm font-medium">
+                  {encode ? "Qarğa dilində" : "Azərbaycanca"}
+                </label>
+                <button
+                  type="button"
+                  onClick={handleCopy}
+                  disabled={!outputText}
+                  className="text-sm text-accent underline-offset-4 hover:underline disabled:cursor-not-allowed disabled:text-muted disabled:no-underline"
+                >
+                  {copyState === "done"
+                    ? "Köçürüldü"
+                    : copyState === "error"
+                      ? "Köçürmək alınmadı"
+                      : "Köçür"}
+                </button>
+              </div>
+              <textarea
+                id="output-text"
+                readOnly
+                value={outputText}
+                placeholder="Nəticə burada görünəcək"
+                className="min-h-[180px] flex-1 resize-y rounded-md border border-line bg-paper p-3 leading-relaxed"
+              />
             </div>
           </div>
-        )}
-      </main>
+        </main>
 
-      <footer className="mt-8 text-center text-gray-400 dark:text-gray-500 text-sm">
-        <p>Qarğa Dili Generator &copy; {new Date().getFullYear()}</p>
-        <p>
-          Hazırladı:{" "}
-          <a
-            href="https://github.com/imrashidov"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-amber-500 hover:text-amber-400 dark:text-amber-400 dark:hover:text-amber-300"
-          >
-            Farid Rashidov
-          </a>
-        </p>
-      </footer>
+        <section className="mt-16 max-w-xl" aria-labelledby="how">
+          <h2 id="how" className="font-serif text-2xl font-semibold">
+            Qarğa dili necə işləyir?
+          </h2>
+          <p className="mt-3 leading-relaxed text-muted">
+            Qarğa dilində hər saitdən (a, ı, o, u, e, ə, i, ö, ü) sonra “ba”
+            və ya “ga” kimi bir hece əlavə olunur. Əlavə hecanın saiti sözün
+            səsinə uyğunlaşır: qalın saitdən sonra “ba”, incə saitdən sonra
+            “bə” gəlir.
+          </p>
+          <ul className="mt-4 space-y-1 text-muted">
+            <li>
+              Salam → <span className="text-ink">Sabalabam</span>
+            </li>
+            <li>
+              Necəsən? → <span className="text-ink">Nebəcəbəsəbən?</span>
+            </li>
+          </ul>
+          <h2 className="mt-8 font-serif text-2xl font-semibold">
+            Qarğa dilindən Azərbaycancaya necə çevirmək olar?
+          </h2>
+          <p className="mt-3 leading-relaxed text-muted">
+            Ortadakı oxa basıb istiqaməti dəyişin, Qarğa dilindəki mətni
+            yapışdırın və eyni variantı (ba, ga və ya öz hecanızı) seçin.
+            Əlavə hecalar silinəcək və normal mətn görünəcək.
+          </p>
+        </section>
+
+        <footer className="mt-16 border-t border-line pt-6 text-sm text-muted">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <span>
+              Hazırlayan:{" "}
+              <a
+                href="https://github.com/imrashidov"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-ink underline underline-offset-4"
+              >
+                Farid Rashidov
+              </a>
+            </span>
+            <a
+              href="https://github.com/imrashidov/qarga-dili-generator/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4 hover:text-ink"
+            >
+              Xəta bildir
+            </a>
+            <a
+              href="https://www.buymeacoffee.com/imrashidov"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4 hover:text-ink"
+            >
+              Qəhvə ısmarla
+            </a>
+          </div>
+        </footer>
+      </div>
+      {supporters.length > 0 && (
+        <section
+          aria-label="Mənə qəhvə ısmarlayanlar"
+          className="fixed inset-x-0 bottom-0 z-10 flex w-full items-center overflow-hidden border-t border-line bg-surface py-3 text-sm"
+        >
+          <span className="flex shrink-0 items-center gap-2 bg-surface px-4 font-medium text-ink">
+            <Image
+              src="/images/bmc-logo.svg"
+              alt=""
+              width={35}
+              height={50}
+              unoptimized
+              className="h-7 w-auto rounded bg-white px-1 py-0.5"
+            />
+            Qəhvə ısmarlayanlar:
+          </span>
+          <div className="marquee-mask min-w-0 flex-1 overflow-hidden">
+            <div className="marquee-track flex w-max text-muted">
+              {[0, 1].map((n) => (
+                <ul
+                  key={n}
+                  aria-hidden={n === 1}
+                  className="flex shrink-0 items-center"
+                >
+                  {Array.from({ length: 6 }, () => supporters)
+                    .flat()
+                    .map((name, i) => (
+                      <li key={i} className="whitespace-nowrap px-6">
+                        {name}
+                      </li>
+                    ))}
+                </ul>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

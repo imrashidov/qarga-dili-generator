@@ -8,33 +8,38 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f5f2ea" },
+    { media: "(prefers-color-scheme: dark)", color: "#141413" },
+  ],
 };
 
 export const metadata: Metadata = {
   title: {
-    default: "Qarğa Dili Generator",
+    default: "Qarğa dili generator – mətni onlayn Qarğa dilinə çevir",
     template: "%s | Qarğa Dili Generator",
   },
   description:
-    "Qarğa dili kodlaşdırılmış və ya şifrəli danışıq üsuludur. Bu dilin əsas məqsədi sözləri elə dəyişməkdir ki, yalnız onu bilən şəxslər anlaya bilsin.",
+    "Qarğa dili kodlaşdırılmış danışıq üsuludur: hər saitdən sonra bir hece əlavə olunur ki, yalnız bu oyunu bilənlər sözü anlasın. Mətni onlayn Qarğa dilinə çevirin.",
   metadataBase: new URL("https://qargadili.vercel.app"),
   keywords: [
     "Qarğa dili",
-    "Azərbaycan",
-    "dil oyunu",
-    "generator",
-    "əyləncə",
-    "qarga",
+    "Qarğa dili generator",
     "qarga dili",
     "qarga dili generator",
-    "qarga dili oyunu",
-    "qarga dili oyunu generator",
-    "qarga dili oyunu generator",
-    "qarga dili oyunu generator",
+    "Azərbaycan dili",
+    "dil oyunu",
+    "şifrəli danışıq",
   ],
   authors: [{ name: "Farid Rashidov", url: "https://github.com/imrashidov" }],
   creator: "Farid Rashidov",
   publisher: "Farid Rashidov",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+  category: "education",
   alternates: {
     canonical: "https://qargadili.vercel.app",
   },
@@ -43,24 +48,6 @@ export const metadata: Metadata = {
     capable: true,
     title: "Qarğa Dili",
     statusBarStyle: "black-translucent",
-    startupImage: [
-      {
-        url: "/apple-splash-640-1136.png",
-        media: "(device-width: 320px) and (device-height: 568px)",
-      },
-      {
-        url: "/apple-splash-750-1334.png",
-        media: "(device-width: 375px) and (device-height: 667px)",
-      },
-      {
-        url: "/apple-splash-1242-2208.png",
-        media: "(device-width: 414px) and (device-height: 736px)",
-      },
-      {
-        url: "/apple-splash-1125-2436.png",
-        media: "(device-width: 375px) and (device-height: 812px)",
-      },
-    ],
   },
   formatDetection: {
     telephone: false,
@@ -72,7 +59,7 @@ export const metadata: Metadata = {
     url: "https://qargadili.vercel.app",
     title: "Qarğa Dili Generator",
     description:
-      "Qarğa dili kodlaşdırılmış və ya şifrəli danışıq üsuludur. Bu dilin əsas məqsədi sözləri elə dəyişməkdir ki, yalnız onu bilən şəxslər anlaya bilsin.",
+      "Qarğa dili kodlaşdırılmış danışıq üsuludur: hər saitdən sonra bir hece əlavə olunur ki, yalnız bu oyunu bilənlər sözü anlasın. Mətni onlayn Qarğa dilinə çevirin.",
     siteName: "Qarğa Dili Generator",
     images: [
       {
@@ -87,20 +74,22 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Qarğa Dili Generator",
     description:
-      "Qarğa dili kodlaşdırılmış və ya şifrəli danışıq üsuludur. Bu dilin əsas məqsədi sözləri elə dəyişməkdir ki, yalnız onu bilən şəxslər anlaya bilsin.",
+      "Qarğa dili kodlaşdırılmış danışıq üsuludur: hər saitdən sonra bir hece əlavə olunur ki, yalnız bu oyunu bilənlər sözü anlasın. Mətni onlayn Qarğa dilinə çevirin.",
     images: ["/images/og-image.png"],
     creator: "@imrashidov",
   },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/images/apple-touch-icon.png",
+    apple: "/apple-touch-icon.png",
   },
   other: {
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "black-translucent",
     "format-detection": "telephone=no",
-    "google-site-verification": process.env.GOOGLE_SITE_VERIFICATION || "",
+    ...(process.env.GOOGLE_SITE_VERIFICATION
+      ? { "google-site-verification": process.env.GOOGLE_SITE_VERIFICATION }
+      : {}),
   },
 };
 
@@ -112,7 +101,6 @@ export default function RootLayout({
   return (
     <html lang="az" suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#000000" />
         <meta name="apple-mobile-web-app-title" content="Qarğa Dili" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta
@@ -120,24 +108,19 @@ export default function RootLayout({
           content="black-translucent"
         />
         <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href="/favicon-96x96.png"
+        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/images/apple-touch-icon.png"
+          href="/apple-touch-icon.png"
         />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/images/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/images/favicon-16x16.png"
-        />
-        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="msapplication-TileColor" content="#f5f2ea" />
         {/* Google Analytics */}
         <Script
           strategy="afterInteractive"
@@ -165,27 +148,23 @@ export default function RootLayout({
                   url: "https://qargadili.vercel.app/",
                   name: "Qarğa Dili Generator",
                   description:
-                    "Qarğa dili kodlaşdırılmış və ya şifrəli danışıq üsuludur. Bu dilin əsas məqsədi sözləri elə dəyişməkdir ki, yalnız onu bilən şəxslər anlaya bilsin.",
-                  potentialAction: {
-                    "@type": "SearchAction",
-                    target:
-                      "https://qargadili.vercel.app/?s={search_term_string}",
-                    "query-input": "required name=search_term_string",
-                  },
+                    "Qarğa dili kodlaşdırılmış danışıq üsuludur: hər saitdən sonra bir hece əlavə olunur ki, yalnız bu oyunu bilənlər sözü anlasın. Mətni onlayn Qarğa dilinə çevirin.",
                   inLanguage: "az-AZ",
                 },
                 {
-                  "@type": "Organization",
-                  "@id": "https://qargadili.vercel.app/#organization",
+                  "@type": "WebApplication",
+                  "@id": "https://qargadili.vercel.app/#app",
                   name: "Qarğa Dili Generator",
                   url: "https://qargadili.vercel.app/",
-                  logo: {
-                    "@type": "ImageObject",
-                    "@id": "https://qargadili.vercel.app/#logo",
-                    url: "https://qargadili.vercel.app/images/og-image.png",
-                    width: 1200,
-                    height: 630,
-                    caption: "Qarğa Dili Generator",
+                  applicationCategory: "EntertainmentApplication",
+                  operatingSystem: "Any",
+                  inLanguage: "az-AZ",
+                  isAccessibleForFree: true,
+                  offers: { "@type": "Offer", price: "0", priceCurrency: "AZN" },
+                  author: {
+                    "@type": "Person",
+                    name: "Farid Rashidov",
+                    url: "https://github.com/imrashidov",
                   },
                 },
               ],

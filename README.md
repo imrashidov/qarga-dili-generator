@@ -1,24 +1,25 @@
-# Qarğa Dili Generator 🐦‍⬛
+# Qarğa Dili Generator
 
-"Qarğa Dili" (Qarğa Dili) generator, ənənəvi Azərbaycan dil oyunu olan Qarğa Dilini normal mətndən avtomatik olaraq yaradan veb tətbiqdir.
+Qarğa Dili Generator, Azərbaycanda yayılmış dil oyunu olan Qarğa dilini normal mətndən avtomatik yaradan veb tətbiqdir.
 
 ## Qarğa Dili nədir?
 
-Qarğa Dili, normal danışıq dilində hər sait hərfdən (a, e, i, o, u, ə) sonra "ba" və ya fərqli bölgələrdə "g", "ga" kimi hecalar əlavə olunmaqla yaradılan əyləncəli bir dil oyunudur.
-Qarğa dili kodlaşdırılmış və ya şifrəli danışıq üsuludur. Bu dilin əsas məqsədi sözləri elə dəyişməkdir ki, yalnız onu bilən şəxslər anlaya bilsin.
+Qarğa dili hər saitdən (a, ı, o, u, e, ə, i, ö, ü) sonra "ba" və ya "ga" kimi bir hece əlavə etməklə yaradılan dil oyunudur. Məqsəd sözləri elə dəyişməkdir ki, yalnız bu oyunu bilənlər anlasın.
+
+Əlavə olunan hece saitin qalın və ya incə olmasına uyğunlaşır: qalın saitdən sonra "ba", incə saitdən sonra "bə" gəlir.
 
 Məsələn:
 
 - "Salam" → "Sabalabam"
-- "Necəsən?" → "Nebəcəbəsəban?"
-- "Mən məktəbə gedirəm." → "Məbən məbəktəbəbə gebedirəbəm."
+- "Necəsən?" → "Nebəcəbəsəbən?"
+- "Mən məktəbə gedirəm." → "Məbən məbəktəbəbəbə gebədibərəbəm."
 
 ## Özəlliklər
 
 - Normal mətni Qarğa Dilinə çevirmə
-- Fərqli bölgə variantlarını dəstəkləmə (ba, ga və ya xüsusi əlavələr)
-- Mobil uyğun dizayn
-- Nəticəni mübadilə buferinə kopyalama
+- Fərqli variantlar (ba, ga və ya öz hecanız)
+- Mobil cihazlara uyğun dizayn
+- Nəticəni bir kliklə köçürmə
 
 ## Ekran görüntüləri
 
@@ -31,14 +32,14 @@ Məsələn:
 - Tailwind CSS 4
 - TypeScript
 
-## Necə İstifadə Olunur
+## İstifadə qaydası
 
 1. Bir mətn daxil edin
-2. Variantınızı seçin (ba, ga və ya xüsusi)
-3. "Çevir" düyməsinə klikləyin
-4. Nəticəni görüntüləyin və istəsəniz kopyalayın
+2. Variantınızı seçin (ba, ga və ya öz hecanız)
+3. Nəticə yanda avtomatik görünür
+4. "Köçür" düyməsi ilə nəticəni köçürün
 
-## Quraşdırma və İşə Salma
+## Quraşdırma
 
 ```bash
 # Layihəni klonlayın
@@ -48,23 +49,24 @@ cd qarga-dili-generator
 # Asılılıqları yükləyin
 npm install
 
-# İnkişaf serverini başladın
+# İnkişaf serverini işə salın
 npm run dev
 ```
 
-Brauzerinizdə [http://localhost:3000](http://localhost:3000) ünvanını açaraq tətbiqi görüntüləyə bilərsiniz.
+Tətbiqi görmək üçün brauzerdə [http://localhost:3000](http://localhost:3000) ünvanını açın.
 
 ## Struktur
 ```bash
 ├── .gitignore
 ├── README.md
 ├── app
-    ├── components
-    │   └── BuyMeACoffee.tsx
+    ├── lib
+    │   └── qarga.ts
+    ├── offline
+    │   └── page.tsx
     ├── globals.css
     ├── layout.tsx
-    ├── manifest.json
-    ├── offline.tsx
+    ├── not-found.tsx
     └── page.tsx
 ├── eslint.config.mjs
 ├── next-sitemap.config.js

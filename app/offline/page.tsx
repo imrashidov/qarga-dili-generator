@@ -1,42 +1,41 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+import Link from "next/link";
+
+function subscribe(callback: () => void) {
+  window.addEventListener("online", callback);
+  window.addEventListener("offline", callback);
+  return () => {
+    window.removeEventListener("online", callback);
+    window.removeEventListener("offline", callback);
+  };
+}
 
 export default function Offline() {
-  const [isOnline, setIsOnline] = useState(true);
-
-  useEffect(() => {
-    setIsOnline(navigator.onLine);
-
-    const handleOnline = () => setIsOnline(true);
-    const handleOffline = () => setIsOnline(false);
-
-    window.addEventListener("online", handleOnline);
-    window.addEventListener("offline", handleOffline);
-
-    return () => {
-      window.removeEventListener("online", handleOnline);
-      window.removeEventListener("offline", handleOffline);
-    };
-  }, []);
+  const isOnline = useSyncExternalStore(
+    subscribe,
+    () => navigator.onLine,
+    () => true
+  );
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center p-8 bg-white rounded-lg shadow-xl max-w-md mx-4">
-        <h1 className="text-2xl font-bold text-gray-800 mb-4">
-          {isOnline ? "Yenidən onlaynsınız!" : "İnternet bağlantısı yoxdur"}
+    <div className="min-h-screen px-5 py-16">
+      <div className="mx-auto max-w-xl">
+        <h1 className="font-serif text-4xl font-semibold tracking-tight">
+          {isOnline ? "Yenidən onlaynsınız" : "İnternet bağlantısı yoxdur"}
         </h1>
-        <p className="text-gray-600 mb-4">
+        <p className="mt-4 text-muted leading-relaxed">
           {isOnline
             ? "Əsas səhifəyə qayıtmaq üçün aşağıdakı düyməni basın."
-            : "Zəhmət olmasa internet bağlantınızı yoxlayın və yenidən cəhd edin."}
+            : "Bağlantınızı yoxlayıb yenidən cəhd edin."}
         </p>
-        <button
-          onClick={() => (window.location.href = "/")}
-          className="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition-colors"
+        <Link
+          href="/"
+          className="mt-8 inline-block rounded-md bg-accent px-4 py-2 text-sm text-accent-ink"
         >
           {isOnline ? "Əsas səhifəyə qayıt" : "Yenilə"}
-        </button>
+        </Link>
       </div>
     </div>
   );

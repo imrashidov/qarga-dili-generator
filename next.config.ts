@@ -75,7 +75,7 @@ const config = withPWA({
 })({
   reactStrictMode: true,
   images: {
-    domains: ["qargadili.vercel.app"],
+    remotePatterns: [{ protocol: "https", hostname: "qargadili.vercel.app" }],
   },
   webpack(config: WebpackConfig) {
     if (config.module) {
@@ -88,14 +88,6 @@ const config = withPWA({
       ];
     }
     return config;
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/sitemap.xml",
-        destination: `https://qargadili.vercel.app/sitemap.xml`,
-      },
-    ];
   },
 } satisfies NextConfig);
 
