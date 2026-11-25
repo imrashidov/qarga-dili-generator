@@ -28,13 +28,8 @@
   ],
   "framework": "nextjs",
   "trailingSlash": false,
-  "regions": ["fra1"],
-  "buildCommand": "npm run build",
-  "public": true,
-  "rewrites": [
-    {
-      "source": "/sitemap.xml",
-      "destination": "/api/sitemap"
-    }
-  ]
+  "regions": [
+    "fra1"
+  ],
+  "buildCommand": "npm run build"
 }
